@@ -8,6 +8,8 @@
     <string name="activity_main_password_validate">El campo contraseña debe contener al menos 8 caracteres</string>
     <string name="activity_main_email_validate">El correo electrónico no contiene un formato correcto</string>
 
+    <string name="delete">Borrar tarea</string>
+
 
     <string-array name="status_book">
         <item>TO READ</item>

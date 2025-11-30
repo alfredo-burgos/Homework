@@ -12,24 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CursoAndroid2025G4">
         <activity
-            android:name=".AddBookActivity"
-            android:exported="false" />
-        <!--
-        <activity
-            android:name=".BookActivity"
-            android:exported="false" />
-        -->
-        <activity
-            android:name=".HomeActivity"
+            android:name=".view.FormActivity"
             android:exported="false" />
         <activity
-            android:name=".BookActivity"
+            android:name=".view.TaskActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

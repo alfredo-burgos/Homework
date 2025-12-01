@@ -2,6 +2,7 @@ package com.fic.cursoandroid2025g4.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -31,7 +32,27 @@ public class TaskActivity extends AppCompatActivity {
         RecyclerView recyclerViewTasks = findViewById(R.id.rvTask);
         recyclerViewTasks.setLayoutManager(new LinearLayoutManager(this));
 
-        taskAdapter = new TaskAdapter();
+        taskAdapter = new TaskAdapter(new TaskAdapter.OnTaskActionListener() {
+            @Override
+            public void onEdit(Task task) {
+                Intent intent = new Intent(TaskActivity.this, FormActivity.class);
+                intent.putExtra("TASK_ID", task.id);
+                intent.putExtra("TASK_TITLE", task.task_title);
+                intent.putExtra("TASK_DESCRIPTION", task.task_description);
+                intent.putExtra("TASK_STATUS", task.is_completed);
+                intent.putExtra("TASK_DATE", task.created_at);
+                intent.putExtra("EDIT", true);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onDelete(Task task) {
+                taskController.deleteTasks(task);
+                List<Task> tasks = taskController.getAllTasks();
+                taskAdapter.setData(tasks);
+
+            }
+        });
         recyclerViewTasks.setAdapter(taskAdapter);
 
         taskController = new TaskController(this);
